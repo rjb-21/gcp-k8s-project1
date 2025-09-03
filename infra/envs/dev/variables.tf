@@ -26,3 +26,15 @@ variable "environment" {
   type        = string
   default     = "dev"
 }
+
+variable "node_count" {
+  description = "Number of nodes in GKE node pool"
+  type        = number
+  default     = 2
+}
+
+variable "machine_type" {
+  description = "Machine type for GKE nodes"
+  type        = string
+  default     = "e2-medium"
+}

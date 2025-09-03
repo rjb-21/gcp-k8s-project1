@@ -48,3 +48,14 @@ module "apis" {
   project_id  = var.project_id
   environment = var.environment
 }
+
+# ----------------- Module: GKE -----------------
+module "gke" {
+  source       = "../../modules/gke"
+  project_id   = var.project_id
+  region       = var.region
+  environment  = var.environment
+  cluster_name = var.cluster_name
+  node_count   = var.node_count
+  machine_type = var.machine_type
+}
