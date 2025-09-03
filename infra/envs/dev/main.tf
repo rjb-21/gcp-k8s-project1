@@ -1,12 +1,6 @@
 terraform {
   required_version = ">= 1.6.0"
 
-  # Remote backend for storing state (per environment)
-  backend "gcs" {
-    bucket = "k8strainingproject1-tf-state"
-    prefix = "envs/dev"
-  }
-
   required_providers {
     google = {
       source  = "hashicorp/google"
