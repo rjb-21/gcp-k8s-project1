@@ -1,0 +1,14 @@
+# Enable ArgoCD server with LoadBalancer
+server:
+  service:
+    type: LoadBalancer
+
+# No Ha for dev
+controller:
+  replicas: 1
+
+repoServer:
+  replicas: 1
+
+applicationSet:
+  replicas: 1

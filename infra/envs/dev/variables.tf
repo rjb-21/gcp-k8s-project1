@@ -38,3 +38,15 @@ variable "machine_type" {
   type        = string
   default     = "e2-medium"
 }
+
+variable "argocd_chart_version" {
+  description = "ArgoCD Helm chart version"
+  type        = string
+  default     = "5.51.6"
+}
+
+variable "argocd_namespace" {
+  description = "Namespace for ArgoCD"
+  type        = string
+  default     = "argocd"
+}
