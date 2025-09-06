@@ -1,7 +1,7 @@
 replicaCount: 3
 
 image:
-  repository: europe-west1-docker.pkg.dev/PROJECT_ID/dev-app-repo/webapp
+  repository: europe-west1-docker.pkg.dev/k8strainingproject1/dev-app-repo/webapp
   tag: "1.2.0"
   pullPolicy: IfNotPresent
 
