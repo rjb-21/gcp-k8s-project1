@@ -1,4 +1,4 @@
-replicaCount: 3
+replicaCount: 2
 
 image:
   repository: europe-west1-docker.pkg.dev/k8strainingproject1/dev-app-repo/webapp
