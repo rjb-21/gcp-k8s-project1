@@ -16,3 +16,8 @@ output "gke_endpoint" {
 output "argocd_server_ip" {
   value = try(data.kubernetes_service.argocd_server.status[0].load_balancer[0].ingress[0].ip, null)
 }
+
+output "ci_cd_sa_key_json" {
+  value     = module.ci_cd_sa.ci_cd_sa_key_json
+  sensitive = true
+}

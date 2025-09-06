@@ -96,3 +96,10 @@ module "artifact_registry" {
   region      = var.region
   environment = var.environment
 }
+
+# ----------------- Modules: CI/CD Service Account -----------------
+module "ci_cd_sa" {
+  source               = "../../modules/ci_cd_sa"
+  project_id           = var.project_id
+  service_account_name = "ci-cd-sa"
+}
