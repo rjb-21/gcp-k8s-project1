@@ -1,4 +1,4 @@
-replicaCount: 2
+replicaCount: 3
 
 image:
   repository: europe-west1-docker.pkg.dev/PROJECT_ID/dev-app-repo/webapp
