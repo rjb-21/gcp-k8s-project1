@@ -14,7 +14,7 @@ spec:
         - name: image.repository
           value: europe-west1-docker.pkg.dev/k8strainingproject1/dev-app-repo/webapp
         - name: image.tag
-          value: "1.1.0"
+          value: "1.2.0"
   destination:
     server: https://kubernetes.default.svc
     namespace: webapp
