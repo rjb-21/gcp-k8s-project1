@@ -65,8 +65,8 @@ module "gke" {
 resource "helm_release" "argocd" {
   provider = helm.gke
 
-  name       = "argocd"
-  namespace  = "argocd"
+  name             = "argocd"
+  namespace        = "argocd"
   create_namespace = true
 
   repository = "https://argoproj.github.io/argo-helm"
@@ -77,14 +77,22 @@ resource "helm_release" "argocd" {
     file("${path.module}/values/argocd-values.yaml")
   ]
 
-  depends_on = [module.gke] 
+  depends_on = [module.gke]
 }
 
-
+# ----------------- K8s: argoCD Server -----------------
 data "kubernetes_service" "argocd_server" {
   provider = kubernetes.gke
   metadata {
     name      = "argocd-server"
     namespace = var.argocd_namespace
   }
+}
+
+# ----------------- Modules: Artifact Registry -----------------
+module "artifact_registry" {
+  source      = "../../modules/artifact-registry"
+  project_id  = var.project_id
+  region      = var.region
+  environment = var.environment
 }
