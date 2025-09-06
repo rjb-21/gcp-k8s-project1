@@ -1,0 +1,24 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: webapp
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: 'https://github.com/rjb-21/gcp-k8s-project1.git'
+    targetRevision: main
+    path: charts/webapp
+    helm:
+      parameters:
+        - name: image.repository
+          value: europe-west1-docker.pkg.dev/k8strainingproject1/dev-app-repo/webapp
+        - name: image.tag
+          value: "1.1.0"
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: webapp
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
