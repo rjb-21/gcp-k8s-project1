@@ -1,10 +1,8 @@
 replicaCount: 4
-
 image:
   repository: europe-west1-docker.pkg.dev/k8strainingproject1/dev-app-repo/webapp
-  tag: "1.2.0"
+  tag: 1757415645
   pullPolicy: IfNotPresent
-
 service:
   type: LoadBalancer
   port: 80
