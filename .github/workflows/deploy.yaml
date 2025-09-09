@@ -31,7 +31,7 @@ jobs:
       run: |
         TIMESTAMP=$(date +%s)
         IMAGE="${{ secrets.GCP_REGION }}-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/dev-app-repo/webapp:${TIMESTAMP}"
-        docker build -t $IMAGE ./app
+        docker build -t $IMAGE ../apps/webapp
         docker push $IMAGE
         echo "IMAGE_TAG=$TIMESTAMP" >> $GITHUB_ENV
 
