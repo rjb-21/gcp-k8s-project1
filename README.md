@@ -11,3 +11,6 @@ Application (Flask) Image built using Docker and it's running in Helm release ru
 
 ArgoCD configure and GitHub Action flow created
 <img width="1563" height="442" alt="image" src="https://github.com/user-attachments/assets/53d4a568-7a6f-4d3c-9d92-d0d003f007e6" />
+
+GitHub Actions configured and tested:
+<img width="810" height="742" alt="image" src="https://github.com/user-attachments/assets/3fab549d-592f-4ad2-a6b4-60e26cdf51a3" />
