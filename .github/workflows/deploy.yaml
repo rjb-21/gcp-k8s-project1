@@ -1,5 +1,8 @@
 name: CI/CD Dev Webapp
 
+permissions:
+  contents: write
+
 on:
   push:
     branches:
@@ -8,6 +11,7 @@ on:
       - 'apps/webapp**'
       - 'charts/webapp/**'
 
+
 jobs:
   build-and-update:
     runs-on: ubuntu-latest
@@ -15,6 +19,8 @@ jobs:
     steps:
     - name: Checkout repo
       uses: actions/checkout@v3
+      with:
+        persist-credentials: true
 
     - name: Authenticate to Google Cloud
       uses: google-github-actions/auth@v1
@@ -39,16 +45,24 @@ jobs:
         docker push $IMAGE
         echo "IMAGE_TAG=$TIMESTAMP" >> $GITHUB_ENV
 
-    - name: Configure Docker for Artifact Registry
-      run: gcloud auth configure-docker ${{ secrets.GCP_REGION }}-docker.pkg.dev --quiet
-
-
     - name: Update Helm values with new tag
       run: |
         yq e '.image.tag = env(IMAGE_TAG)' -i charts/webapp/values.yaml
-        git config user.name "github-actions"
-        git config user.email "github-actions@github.com"
+
+    - name: Configure git for pushing
+      run: |
+        git config user.name "github-actions[bot]"
+        git config user.email "github-actions[bot]@users.noreply.github.com"
         git add charts/webapp/values.yaml
         git commit -m "CI: update image tag to $IMAGE_TAG" || echo "No changes to commit"
-        git push
+
+    - name: Push changes
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: |
+        # set remote to use GITHUB_TOKEN for HTTPS auth
+        git remote set-url origin https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }}
+        # push current HEAD back to the branch that triggered the workflow
+        git push origin HEAD:${{ github.ref_name }}
+
 
