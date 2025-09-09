@@ -24,8 +24,8 @@ jobs:
     - name: Set up GCP
       uses: google-github-actions/setup-gcloud@v1
       with:
-      project_id: ${{ secrets.GCP_PROJECT_ID }}
-      install_components: 'gke-gcloud-auth-plugin'
+        project_id: ${{ secrets.GCP_PROJECT_ID }}
+        install_components: 'gke-gcloud-auth-plugin'
 
     - name: Configure Docker for Artifact Registry
       run: |
