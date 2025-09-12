@@ -39,7 +39,7 @@ jobs:
 
     - name: Build Docker image
       run: |
-        TIMESTAMP=$(date +%s)
+        TIMESTAMP="build-$(date +%s)"
         IMAGE="${{ secrets.GCP_REGION }}-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/dev-app-repo/webapp:${TIMESTAMP}"
         docker build -t $IMAGE ./apps/webapp
         docker push $IMAGE
@@ -47,7 +47,7 @@ jobs:
 
     - name: Update Helm values with new tag
       run: |
-        yq e '.image.tag = env(IMAGE_TAG)' -i charts/webapp/values.yaml
+        yq e '.image.tag = strenv(IMAGE_TAG)' -i charts/webapp/values.yaml
 
     - name: Configure git for pushing
       run: |
