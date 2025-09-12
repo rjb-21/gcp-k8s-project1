@@ -7,7 +7,8 @@ CI/CD: GitHub Actions
 GitOps: ArgoCD  
 
 
-K8s cluster and ArgoCD is running:
+K8s cluster and ArgoCD is running:  
+<img width="735" height="435" alt="image" src="https://github.com/user-attachments/assets/e1dfe458-4f3d-4798-838d-c9b0dadc2bf5" />  
 <img width="807" height="870" alt="image" src="https://github.com/user-attachments/assets/cab61773-4a1e-4d3d-a528-9ae97b53b677" />  
 
 
