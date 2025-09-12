@@ -1,7 +1,7 @@
 Multi-service web app with full automated piepline.
 
 Platform: GCP, GKE+Helm  
-WebApp: Flask  
+WebApp: Flask, Docker    
 Version control: GitHub  
 CI/CD: GitHub Actions  
 GitOps: ArgoCD  
